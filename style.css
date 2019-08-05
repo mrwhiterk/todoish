@@ -20,8 +20,54 @@ ul {
 
 .todoList li {
   list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
 }
 
 .todoList li:hover {
   background-color: yellow;
+}
+
+label {
+  margin: 16px 0;
+}
+
+#todoInput {
+  height: 30px;
+  border-radius: 1px;
+}
+#todoInput:focus {
+  background-color: lightblue;
+}
+
+input[type='submit'] {
+  height: 30px;
+  width: 100px;
+  background-color: rgb(62, 62, 255);
+  color: white;
+  font-size: 18px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  box-shadow: 0 10px rgb(113, 113, 255);
+  position: relative;
+}
+
+input[type='submit']:hover {
+  box-shadow: 0 5px rgb(113, 113, 255);
+  top: 5px;
+}
+
+input[type='submit']:active {
+  box-shadow: 0 0 rgb(113, 113, 255);
+  top: 10px;
+}
+
+.deleteBtn {
+  background-color: red;
+  color: white;
+  display: inline-block;
+  margin: 10px;
+  cursor: pointer;
 }

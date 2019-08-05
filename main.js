@@ -1,5 +1,6 @@
 let todoListSection = document.querySelector('.todoList');
-
+let todoBtn = document.querySelector('#todoInputBtn');
+let deleteBtn;
 let storage = localStorage.getItem('todoList');
 
 let todoList =
@@ -15,29 +16,45 @@ function printTodoList() {
   });
 }
 
-//
 function displayTodoList() {
+  document.querySelector('.todoList').innerHTML = '';
   todoList.forEach(todo => {
     let todoItem = document.createElement('li');
-    todoItem.textContent = todo;
+    todoItem.innerHTML = todo += "<button class='deleteBtn'>delete</button";
     todoListSection.appendChild(todoItem);
-  })
+  });
+  deleteBtns = document.querySelectorAll('.deleteBtn');
+
+  deleteBtns.forEach(item => {
+    item.addEventListener('click', evt => {
+      todoList = todoList.filter(
+        x => x + 'delete' !== evt.target.parentNode.textContent
+      );
+      evt.target.parentNode.innerHTML = '';
+      localStorage.setItem('todoList', todoList);
+    });
+  });
 }
 
-displayTodoList()
+displayTodoList();
 
-function addTodo(todo, index = 0) {
-  todoList.splice(index, 0, todo);
+todoBtn.addEventListener('click', addTodo);
+
+function addTodo(index = 0) {
+  let todoInput = document.querySelector('#todoInput');
+  todoList.splice(index, 0, todoInput.value);
+  todoInput.value = '';
   localStorage.setItem('todoList', todoList);
-  console.log(`added ${todo} at index: ${index}`);
+  displayTodoList();
 }
 
 function removeTodo(index = 0) {
   let removedItem = todoList.splice(index, 1);
   localStorage.setItem('todoList', todoList);
-  console.log(`removed ${removedItem} from index: ${index}`);
 }
 
 function clear() {
   localStorage.clear();
+  displayTodoList();
+  location.reload();
 }
