@@ -1,10 +1,12 @@
 let todoListSection = document.querySelector('.todoList');
 let todoBtn = document.querySelector('#todoInputBtn');
 let deleteBtn;
-let storage = localStorage.getItem('todoList');
+let storage = JSON.parse(localStorage.getItem('todoList'));
 
-let todoList =
-  storage !== null ? storage.split(',') : ['walk the dog', 'mow the lawn'];
+let todoList = storage || [
+  { body: 'walk the dog', complete: false },
+  { body: 'mow the lawn', complete: true }
+];
 
 function printTodo(todo) {
   console.log(todo);
@@ -22,17 +24,20 @@ function displayTodoList() {
     let todoItem = document.createElement('li');
     todoItem.innerHTML =
       "<p id='todo'>" +
-      todo +
+      todo.body +
       '</p>' +
       "<span><button class='deleteBtn'>delete</button><button class='complete'>toggle complete</button></span>";
+    if (todo.complete) {
+      todoItem.classList.add('done');
+    }
     todoListSection.appendChild(todoItem);
   });
-  let deleteBtns = document.querySelectorAll('.deleteBtn');
 
+  let deleteBtns = document.querySelectorAll('.deleteBtn');
   deleteBtns.forEach((item, i) => {
     item.addEventListener('click', evt => {
       todoList.splice(i, 1);
-      localStorage.setItem('todoList', todoList);
+      setStorage();
       evt.target.parentNode.innerHTML = '';
       displayTodoList();
     });
@@ -55,20 +60,18 @@ function addTodo(index = 0) {
   if (todoInput.value === '') {
     alert('Please enter text');
   } else {
-    todoList.splice(index, 0, todoInput.value);
+    todoList.splice(index, 0, { body: todoInput.value, complete: false });
     todoInput.value = '';
-    localStorage.setItem('todoList', todoList);
+    setStorage();
     displayTodoList();
   }
 }
 
 function removeTodo(index = 0) {
   let removedItem = todoList.splice(index, 1);
-  localStorage.setItem('todoList', todoList);
+  setStorage();
 }
 
-function clear() {
-  localStorage.clear();
-  displayTodoList();
-  location.reload();
+function setStorage() {
+  localStorage.setItem('todoList', JSON.stringify(todoList));
 }
