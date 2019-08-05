@@ -20,11 +20,14 @@ function displayTodoList() {
   document.querySelector('.todoList').innerHTML = '';
   todoList.forEach(todo => {
     let todoItem = document.createElement('li');
-    todoItem.innerHTML = todo +=
-      "<span><span><button class='deleteBtn'>delete</button><button class='complete'>complete</button>";
+    todoItem.innerHTML =
+      "<p id='todo'>" +
+      todo +
+      '</p>' +
+      "<span><button class='deleteBtn'>delete</button><button class='complete'>toggle complete</button></span>";
     todoListSection.appendChild(todoItem);
   });
-  deleteBtns = document.querySelectorAll('.deleteBtn');
+  let deleteBtns = document.querySelectorAll('.deleteBtn');
 
   deleteBtns.forEach((item, i) => {
     item.addEventListener('click', evt => {
@@ -35,7 +38,13 @@ function displayTodoList() {
     });
   });
 
-  // deleteBtns = document.querySelectorAll('.complete');
+  let completeBtns = document.querySelectorAll('.complete');
+  completeBtns.forEach((item, i) => {
+    item.addEventListener('click', evt => {
+      console.log(evt.target.parentNode.parentNode.childNodes[0]);
+      evt.target.parentNode.parentNode.childNodes[0].classList.toggle('done');
+    });
+  });
 }
 
 displayTodoList();
