@@ -41,7 +41,6 @@ function displayTodoList() {
   let completeBtns = document.querySelectorAll('.complete');
   completeBtns.forEach((item, i) => {
     item.addEventListener('click', evt => {
-      console.log(evt.target.parentNode.parentNode.childNodes[0]);
       evt.target.parentNode.parentNode.childNodes[0].classList.toggle('done');
     });
   });
