@@ -1,32 +1,43 @@
-// Global todo list.
-// Put a few todos in there to start with!
-// This is mostly for testing purposes.
-let todoList = ['mow the lawn', 'walk the dog', 'brush the cat'];
+let todoListSection = document.querySelector('.todoList');
 
-// Print a todo.
-// For now, just console log it!
+let storage = localStorage.getItem('todoList');
+
+let todoList =
+  storage !== null ? storage.split(',') : ['walk the dog', 'mow the lawn'];
+
 function printTodo(todo) {
   console.log(todo);
 }
 
-// Print everything on our todo list, INDIVIDUALLY.
-// Make SURE to use the above function!
 function printTodoList() {
   todoList.forEach(item => {
     printTodo(item);
   });
 }
 
-// Add an item to our todo list.
-// Where on the list should we add it?
-// No wrong answer here as long as you can defend the decision!
+//
+function displayTodoList() {
+  todoList.forEach(todo => {
+    let todoItem = document.createElement('li');
+    todoItem.textContent = todo;
+    todoListSection.appendChild(todoItem);
+  })
+}
+
+displayTodoList()
+
 function addTodo(todo, index = 0) {
   todoList.splice(index, 0, todo);
+  localStorage.setItem('todoList', todoList);
   console.log(`added ${todo} at index: ${index}`);
 }
 
-// Remove an item at a given index from our todo list.
 function removeTodo(index = 0) {
   let removedItem = todoList.splice(index, 1);
+  localStorage.setItem('todoList', todoList);
   console.log(`removed ${removedItem} from index: ${index}`);
+}
+
+function clear() {
+  localStorage.clear();
 }
