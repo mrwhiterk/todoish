@@ -1,5 +1,3 @@
 # Todoish
 
-A little JS-only user-unfriendly todo app.
-
-Directions are in `main.js`!
+A full crud app I made with Vanilla HTML, CSS, and Javascript with LocalStorage.
