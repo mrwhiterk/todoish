@@ -1,6 +1,6 @@
 const todoListSection = document.querySelector('.todoList');
 const todoBtn = document.querySelector('#todoInputBtn');
-let storage = JSON.parse(localStorage.getItem('todoList'));
+const storage = JSON.parse(localStorage.getItem('todoList'));
 let todoList = storage || [];
 
 displayTodoList();
@@ -34,16 +34,14 @@ function displayTodoList() {
     todoListSection.appendChild(todoItem);
   });
 
-  populateDeleteBtns();
-
-  populateCompleteBtns();
-
+  populateDeleteButtons();
+  populateCompleteButtons();
   populateEditText();
 }
 
-function populateDeleteBtns() {
-  let deleteBtns = document.querySelectorAll('.deleteBtn');
-  deleteBtns.forEach((item, i) => {
+function populateDeleteButtons() {
+  let deleteButtons = document.querySelectorAll('.deleteBtn');
+  deleteButtons.forEach((item, i) => {
     item.addEventListener('click', evt => {
       todoList.splice(i, 1);
       evt.target.parentNode.innerHTML = '';
@@ -52,9 +50,9 @@ function populateDeleteBtns() {
   });
 }
 
-function populateCompleteBtns() {
-  let completeBtns = document.querySelectorAll('.complete');
-  completeBtns.forEach((item, i) => {
+function populateCompleteButtons() {
+  let completeButtons = document.querySelectorAll('.complete');
+  completeButtons.forEach((item, i) => {
     item.addEventListener('click', evt => {
       todoList[i].complete = !todoList[i].complete;
       evt.target.parentNode.parentNode.childNodes[0].classList.toggle('done');
@@ -64,15 +62,31 @@ function populateCompleteBtns() {
   });
 }
 
-function populateEditText(params) {
+function populateEditText() {
   let textItems = document.querySelectorAll('.todoList p');
+
+  function resetDescriptions(currentIndex) {
+    textItems.forEach((x, index) => {
+      if (currentIndex !== index) {
+        textItems[index].innerHTML = ``;
+        textItems[index].textContent = todoList[index].body;
+      }
+    });
+  }
   textItems.forEach((item, i) => {
-    item.addEventListener('click', (evt, j) => {
-      // todoList[i].complete = !todoList[i].complete;
-      // evt.target.parentNode.parentNode.childNodes[0].classList.toggle('done');
-      // moveDoneBottom();
-      // save();
-      console.log(evt.target);
+    item.addEventListener('click', evt => {
+      resetDescriptions(i);
+      let input = document.createElement('input');
+      input.classList.add('editInput');
+      input.setAttribute('type', 'text');
+      input.value = evt.target.textContent;
+      evt.target.innerHTML = ``;
+      evt.target.appendChild(input);
+
+      input.addEventListener('blur', () => {
+        todoList[i].body = input.value;
+        save();
+      });
     });
   });
 }

@@ -23,7 +23,6 @@ header {
   justify-content: center;
   align-items: center;
   color: white;
-
 }
 
 h1 {
@@ -140,4 +139,12 @@ input[type='submit']:active {
   border-radius: 10px;
   border: none;
   font-size: 1rem;
+}
+
+.editInput {
+  height: 40px;
+  width: 200px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  background-color: lightblue;
 }
