@@ -16,12 +16,13 @@ body {
 /* header */
 
 header {
-  background-color: lightcyan;
+  background-color: #383838;
   width: 100%;
   height: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
 
 }
 
@@ -71,23 +72,23 @@ label {
 input[type='submit'] {
   height: 30px;
   width: 100px;
-  background-color: rgb(62, 62, 255);
+  background-color: rgb(5, 207, 32);
   color: white;
   font-size: 18px;
   border-radius: 5px;
   outline: none;
   border: none;
-  box-shadow: 0 10px rgb(113, 113, 255);
+  box-shadow: 0 10px rgb(82, 255, 119);
   position: relative;
 }
 
 input[type='submit']:hover {
-  box-shadow: 0 5px rgb(113, 113, 255);
+  box-shadow: 0 5px rgb(82, 255, 119);
   top: 5px;
 }
 
 input[type='submit']:active {
-  box-shadow: 0 0 rgb(113, 113, 255);
+  box-shadow: 0 0 rgb(82, 255, 119);
   top: 10px;
 }
 

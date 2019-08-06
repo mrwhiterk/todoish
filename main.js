@@ -1,23 +1,20 @@
-let todoListSection = document.querySelector('.todoList');
-let todoBtn = document.querySelector('#todoInputBtn');
+const todoListSection = document.querySelector('.todoList');
+const todoBtn = document.querySelector('#todoInputBtn');
 let storage = JSON.parse(localStorage.getItem('todoList'));
-
-let todoList = storage || [
-  { body: 'walk the dog', complete: false },
-  { body: 'mow the lawn', complete: true }
-];
-
-// function printTodo(todo) {
-//   console.log(todo);
-// }
-
-// function printTodoList() {
-//   todoList.forEach(item => {
-//     printTodo(item);
-//   });
-// }
+let todoList = storage || [];
 
 displayTodoList();
+
+todoBtn.addEventListener('click', (index = 0) => {
+  let todoInput = document.querySelector('#todoInput');
+  if (todoInput.value === '') {
+    alert('Please enter text');
+  } else {
+    todoList.splice(index, 0, { body: todoInput.value, complete: false });
+    todoInput.value = '';
+    save();
+  }
+});
 
 function displayTodoList() {
   document.querySelector('.todoList').innerHTML = '';
@@ -37,59 +34,58 @@ function displayTodoList() {
     todoListSection.appendChild(todoItem);
   });
 
+  populateDeleteBtns();
+
+  populateCompleteBtns();
+
+  populateEditText();
+}
+
+function populateDeleteBtns() {
   let deleteBtns = document.querySelectorAll('.deleteBtn');
   deleteBtns.forEach((item, i) => {
     item.addEventListener('click', evt => {
       todoList.splice(i, 1);
-      setStorage();
       evt.target.parentNode.innerHTML = '';
-      displayTodoList();
+      save();
     });
   });
+}
 
+function populateCompleteBtns() {
   let completeBtns = document.querySelectorAll('.complete');
   completeBtns.forEach((item, i) => {
-    item.addEventListener('click', (evt, j) => {
+    item.addEventListener('click', evt => {
       todoList[i].complete = !todoList[i].complete;
       evt.target.parentNode.parentNode.childNodes[0].classList.toggle('done');
       moveDoneBottom();
-      setStorage();
-      displayTodoList();
+      save();
     });
   });
 }
 
-todoBtn.addEventListener('click', addTodo);
-
-function addTodo(index = 0) {
-  let todoInput = document.querySelector('#todoInput');
-  if (todoInput.value === '') {
-    alert('Please enter text');
-  } else {
-    todoList.splice(index, 0, { body: todoInput.value, complete: false });
-    todoInput.value = '';
-    setStorage();
-    displayTodoList();
-  }
+function populateEditText(params) {
+  let textItems = document.querySelectorAll('.todoList p');
+  textItems.forEach((item, i) => {
+    item.addEventListener('click', (evt, j) => {
+      // todoList[i].complete = !todoList[i].complete;
+      // evt.target.parentNode.parentNode.childNodes[0].classList.toggle('done');
+      // moveDoneBottom();
+      // save();
+      console.log(evt.target);
+    });
+  });
 }
 
-function removeTodo(index = 0) {
-  let removedItem = todoList.splice(index, 1);
-  setStorage();
-}
-
-function setStorage() {
+function save() {
   localStorage.setItem('todoList', JSON.stringify(todoList));
+  displayTodoList();
 }
 
 function moveDoneBottom() {
   let newArr = [];
   todoList.forEach((item, i) => {
-    if (item.complete) {
-      newArr.push(item);
-    } else {
-      newArr.unshift(item);
-    }
+    item.complete ? newArr.push(item) : newArr.unshift(item);
   });
   todoList = newArr;
 }
