@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 body {
@@ -11,12 +13,25 @@ body {
   font-size: 1.5rem;
 }
 
+/* header */
+
+header {
+  background-color: lightcyan;
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
 h1 {
   font-family: sans-serif;
 }
 
 ul {
-  padding: 0;
+  margin-top: 20px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
   width: 80%;
@@ -35,7 +50,7 @@ ul {
 }
 
 .todoList li:hover {
-  background-color: yellow;
+  background-color: #f3f3f3;
 }
 
 label {

@@ -1,6 +1,5 @@
 let todoListSection = document.querySelector('.todoList');
 let todoBtn = document.querySelector('#todoInputBtn');
-let deleteBtn;
 let storage = JSON.parse(localStorage.getItem('todoList'));
 
 let todoList = storage || [
@@ -8,15 +7,17 @@ let todoList = storage || [
   { body: 'mow the lawn', complete: true }
 ];
 
-function printTodo(todo) {
-  console.log(todo);
-}
+// function printTodo(todo) {
+//   console.log(todo);
+// }
 
-function printTodoList() {
-  todoList.forEach(item => {
-    printTodo(item);
-  });
-}
+// function printTodoList() {
+//   todoList.forEach(item => {
+//     printTodo(item);
+//   });
+// }
+
+displayTodoList();
 
 function displayTodoList() {
   document.querySelector('.todoList').innerHTML = '';
@@ -26,7 +27,10 @@ function displayTodoList() {
       "<p id='todo'>" +
       todo.body +
       '</p>' +
-      "<span><button class='deleteBtn'>delete</button><button class='complete'>toggle complete</button></span>";
+      `<span>
+        <button class='deleteBtn'>delete</button><button class='complete'>${
+          todo.complete ? 'mark uncomplete' : 'complete'
+        }</button></span>`;
     if (todo.complete) {
       todoItem.classList.add('done');
     }
@@ -45,13 +49,14 @@ function displayTodoList() {
 
   let completeBtns = document.querySelectorAll('.complete');
   completeBtns.forEach((item, i) => {
-    item.addEventListener('click', evt => {
+    item.addEventListener('click', (evt, j) => {
+      todoList[i].complete = !todoList[i].complete
       evt.target.parentNode.parentNode.childNodes[0].classList.toggle('done');
+      setStorage();
+      displayTodoList();
     });
   });
 }
-
-displayTodoList();
 
 todoBtn.addEventListener('click', addTodo);
 
