@@ -58,10 +58,11 @@ label {
 }
 
 #todoInput {
-  height: 30px;
+  height: 40px;
   border-radius: 5px;
   outline: none;
-  width: 160px;
+  width: 200px;
+  font-size: 1.1rem;
 }
 #todoInput:focus {
   background-color: lightblue;

@@ -50,8 +50,9 @@ function displayTodoList() {
   let completeBtns = document.querySelectorAll('.complete');
   completeBtns.forEach((item, i) => {
     item.addEventListener('click', (evt, j) => {
-      todoList[i].complete = !todoList[i].complete
+      todoList[i].complete = !todoList[i].complete;
       evt.target.parentNode.parentNode.childNodes[0].classList.toggle('done');
+      moveDoneBottom();
       setStorage();
       displayTodoList();
     });
@@ -79,4 +80,16 @@ function removeTodo(index = 0) {
 
 function setStorage() {
   localStorage.setItem('todoList', JSON.stringify(todoList));
+}
+
+function moveDoneBottom() {
+  let newArr = [];
+  todoList.forEach((item, i) => {
+    if (item.complete) {
+      newArr.push(item);
+    } else {
+      newArr.unshift(item);
+    }
+  });
+  todoList = newArr;
 }
