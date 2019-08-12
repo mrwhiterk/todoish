@@ -7,7 +7,15 @@ router.get('/', (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.render('index', { todos });
+      let newArr = [];
+      todos.forEach(item => {
+        if (item.complete) {
+          newArr.push(item);
+        } else {
+          newArr.unshift(item);
+        }
+      });
+      res.render('index', { todos: newArr });
     }
   });
 });
