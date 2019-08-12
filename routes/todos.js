@@ -7,8 +7,7 @@ router.get('/', (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      console.log(todos);
-      res.render('index', { todos: todos });
+      res.render('index', { todos });
     }
   });
 });
