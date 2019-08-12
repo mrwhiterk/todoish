@@ -37,6 +37,11 @@ router.post('/', (req, res) => {
   }
 });
 
+router.post('/updateText/:id', (req, res) => {
+  console.log(req.params.id);
+  console.log(req.body);
+});
+
 router.put('/updateComplete/:id', (req, res) => {
   Todo.findById(req.params.id, (err, todo) => {
     todo.complete = !todo.complete;

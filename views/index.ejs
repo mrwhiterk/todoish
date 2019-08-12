@@ -25,14 +25,14 @@
       <% todos.forEach( todo => { %>
         <li>
           <% if (todo.complete) { %>
-            <p class="completed" id='todo'>
+            <p class="completed todo">
               <%= todo.body %>
             </p>
             <h6 class="completed" id='date'>
               <%= todo.date %>
             </h6>
           <% } else { %>
-            <p id='todo'>
+            <p class='todo'>
             <%= todo.body %>
             </p>
             <h6 id='date'>
