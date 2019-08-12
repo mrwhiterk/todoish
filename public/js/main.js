@@ -1,9 +1,9 @@
 const todoListSection = document.querySelector('.todoList');
 const todoBtn = document.querySelector('#todoInputBtn');
-const storage = JSON.parse(localStorage.getItem('todoList'));
-let todoList = storage || [];
+// const storage = JSON.parse(localStorage.getItem('todoList'));
+let todoList = [];
 
-displayTodoList();
+// displayTodoList();
 
 function getDate() {
   return new Date().toDateString();
@@ -103,8 +103,8 @@ function populateEditText() {
 }
 
 function save() {
-  localStorage.setItem('todoList', JSON.stringify(todoList));
-  displayTodoList();
+  // localStorage.setItem('todoList', JSON.stringify(todoList));
+  // displayTodoList();
 }
 
 function moveDoneBottom() {

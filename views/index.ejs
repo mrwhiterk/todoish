@@ -15,7 +15,28 @@
     /></label>
 
     <input type="submit" id="todoInputBtn" />
-    <ul class="todoList"></ul>
+    <ul class="todoList">
+      <% todos.forEach( todo => { %>
+        <li>
+          <p id='todo'>
+            <%= todo.body %>
+          </p>
+          <h6 id='date'>
+            <%= todo.date %>
+          </h6>
+          <span>
+            <button class='deleteBtn'>
+              delete
+            </button>
+            <button class='complete'>
+              complete
+            </button>
+          </span>
+        </li>
+      <% }); %>
+      
+
+    </ul>
     <script src="/js/main.js"></script>
   </body>
 </html>

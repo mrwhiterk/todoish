@@ -39,4 +39,4 @@ function seedDB() {
   });
 }
 
-module.exports = seed;
+module.exports = seedDB;

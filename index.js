@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
+const seedDB = require('./seeds');
 
 const Todo = require('./models/todo');
 const todoRoutes = require('./routes/todos');
@@ -23,9 +24,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(methodOverride('_method'));
+// seedDB();
 
 app.get('/', (req, res) => {
-  res.render('index');
+  Todo.find({}, (err, todos) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(todos);
+      res.render('index', { todos: todos });
+    }
+  });
 });
 
 app.listen(PORT, () => {
