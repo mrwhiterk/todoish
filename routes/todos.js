@@ -38,9 +38,7 @@ router.post('/', (req, res) => {
 });
 
 router.put('/updateComplete/:id', (req, res) => {
-  console.log(req.params.id);
   Todo.findById(req.params.id, (err, todo) => {
-    console.log('todo', todo);
     todo.complete = !todo.complete;
 
     Todo.findByIdAndUpdate(req.params.id, todo, (err, updateTodo) => {
@@ -48,7 +46,6 @@ router.put('/updateComplete/:id', (req, res) => {
         console.log(err);
       } else {
         console.log('todo updated');
-        console.log(updateTodo);
       }
     });
     res.redirect('/');
