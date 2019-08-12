@@ -12,8 +12,10 @@
     </header>
     <form action="/" method="POST">
       <label
-        ><input type="text" id="todoInput" name="body" placeholder="enter new todo"
-      /></label>
+        >
+        <input type="text" id="todoInput" name="body" placeholder="enter new todo"
+      />
+      </label>
       
       <input id="addButton" type="submit" />
 
@@ -22,12 +24,21 @@
     <ul class="todoList">
       <% todos.forEach( todo => { %>
         <li>
-          <p id='todo'>
+          <% if (todo.complete) { %>
+            <p class="completed" id='todo'>
+              <%= todo.body %>
+            </p>
+            <h6 class="completed" id='date'>
+              <%= todo.date %>
+            </h6>
+          <% } else { %>
+            <p id='todo'>
             <%= todo.body %>
-          </p>
-          <h6 id='date'>
-            <%= todo.date %>
-          </h6>
+            </p>
+            <h6 id='date'>
+              <%= todo.date %>
+            </h6>
+          <% } %>
           
           <span>
             <form action="/<%= todo._id %>?_method=delete" method="POST">
@@ -35,9 +46,20 @@
                 delete
               </button>
             </form>
-            <button class='complete'>
-              complete
-            </button>
+          <% if (todo.complete) { %>
+
+            <form action="/updateComplete/<%= todo._id %>?_method=put" method="POST">
+              <button type='submit' class='complete'>
+                mark incomplete
+              </button>
+            </form>
+          <% } else { %>
+            <form action="/updateComplete/<%= todo._id %>?_method=put" method="POST">
+              <button type='submit' class='complete'>
+                complete
+              </button>
+            </form>
+          <% } %>
           </span>
         </li>
       <% }); %>

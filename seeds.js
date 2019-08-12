@@ -35,6 +35,7 @@ function seedDB() {
           }
         });
       });
+      console.log(data);
     }
   });
 }
