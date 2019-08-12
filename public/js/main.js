@@ -5,12 +5,20 @@ let todoList = storage || [];
 
 displayTodoList();
 
+function getDate() {
+  return new Date().toDateString();
+}
+
 todoBtn.addEventListener('click', (index = 0) => {
   let todoInput = document.querySelector('#todoInput');
   if (todoInput.value === '') {
     alert('Please enter text');
   } else {
-    todoList.splice(index, 0, { body: todoInput.value, complete: false });
+    todoList.splice(index, 0, {
+      body: todoInput.value,
+      complete: false,
+      date: getDate()
+    });
     todoInput.value = '';
     save();
   }
@@ -24,6 +32,9 @@ function displayTodoList() {
       "<p id='todo'>" +
       todo.body +
       '</p>' +
+      "<h6 id='date'>" +
+      todo.date +
+      '</h6>' +
       `<span>
         <button class='deleteBtn'>delete</button><button class='complete'>${
           todo.complete ? 'mark uncomplete' : 'complete'
