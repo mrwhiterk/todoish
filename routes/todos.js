@@ -29,4 +29,15 @@ router.post('/', (req, res) => {
   }
 });
 
+router.delete('/:id', (req, res) => {
+  Todo.findByIdAndRemove(req.params.id, (err, removedTodo) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('removed ' + removedTodo);
+    }
+    res.redirect('/');
+  });
+});
+
 module.exports = router;

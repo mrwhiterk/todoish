@@ -15,7 +15,7 @@
         ><input type="text" id="todoInput" name="body" placeholder="enter new todo"
       /></label>
       
-      <input type="submit" />
+      <input id="addButton" type="submit" />
 
     </form>
 
@@ -28,10 +28,13 @@
           <h6 id='date'>
             <%= todo.date %>
           </h6>
+          
           <span>
-            <button class='deleteBtn'>
-              delete
-            </button>
+            <form action="/<%= todo._id %>?_method=delete" method="POST">
+              <button type='submit' class="deleteBtn">
+                delete
+              </button>
+            </form>
             <button class='complete'>
               complete
             </button>
