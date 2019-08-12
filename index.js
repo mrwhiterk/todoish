@@ -10,6 +10,8 @@ const todoRoutes = require('./routes/todos');
 
 const PORT = process.env.PORT || 3000;
 
+console.log('process ', process.env.DATABASEURL);
+
 mongoose
   .connect(process.env.DATABASEURL || 'mongodb://localhost:27017/todoish', {
     useNewUrlParser: true,
