@@ -9,20 +9,20 @@ function getDate() {
   return new Date().toDateString();
 }
 
-todoBtn.addEventListener('click', (index = 0) => {
-  let todoInput = document.querySelector('#todoInput');
-  if (todoInput.value === '') {
-    alert('Please enter text');
-  } else {
-    todoList.splice(index, 0, {
-      body: todoInput.value,
-      complete: false,
-      date: getDate()
-    });
-    todoInput.value = '';
-    save();
-  }
-});
+// todoBtn.addEventListener('click', (index = 0) => {
+//   let todoInput = document.querySelector('#todoInput');
+//   if (todoInput.value === '') {
+//     alert('Please enter text');
+//   } else {
+//     todoList.splice(index, 0, {
+//       body: todoInput.value,
+//       complete: false,
+//       date: getDate()
+//     });
+//     todoInput.value = '';
+//     save();
+//   }
+// });
 
 function displayTodoList() {
   document.querySelector('.todoList').innerHTML = '';

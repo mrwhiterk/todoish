@@ -10,11 +10,15 @@
     <header>
       <h1>Todoish</h1>
     </header>
-    <label
-      ><input type="text" id="todoInput" placeholder="enter new todo"
-    /></label>
+    <form action="/" method="POST">
+      <label
+        ><input type="text" id="todoInput" name="body" placeholder="enter new todo"
+      /></label>
+      
+      <input type="submit" />
 
-    <input type="submit" id="todoInputBtn" />
+    </form>
+
     <ul class="todoList">
       <% todos.forEach( todo => { %>
         <li>

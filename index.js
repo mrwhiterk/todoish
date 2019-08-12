@@ -26,16 +26,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(methodOverride('_method'));
 // seedDB();
 
-app.get('/', (req, res) => {
-  Todo.find({}, (err, todos) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(todos);
-      res.render('index', { todos: todos });
-    }
-  });
-});
+app.use('/', todoRoutes);
 
 app.listen(PORT, () => {
   console.log(`Example app listening on ${PORT} port!`);
