@@ -157,3 +157,7 @@ li span {
 li .completed {
   text-decoration: line-through;
 }
+
+p input {
+  font-size: 18px;
+}

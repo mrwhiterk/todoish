@@ -33,13 +33,13 @@
             </h6>
           <% } else { %>
             <p class='todo'>
-            <%= todo.body %>
+              <%= todo.body %>
+              <input type='hidden' id='todoId' value='<%= todo._id %>' />
             </p>
             <h6 id='date'>
               <%= todo.date %>
             </h6>
           <% } %>
-          
           <span>
             <form action="/<%= todo._id %>?_method=delete" method="POST">
               <button type='submit' class="deleteBtn">
@@ -66,6 +66,7 @@
       
 
     </ul>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/js/main.js"></script>
   </body>
 </html>

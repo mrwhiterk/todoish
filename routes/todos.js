@@ -37,9 +37,20 @@ router.post('/', (req, res) => {
   }
 });
 
-router.post('/updateText/:id', (req, res) => {
-  console.log(req.params.id);
-  console.log(req.body);
+router.post('/updateText/:id/:text', (req, res) => {
+  let { id, text } = req.params;
+  Todo.findById(id, (err, todo) => {
+    todo.body = text;
+
+    Todo.findByIdAndUpdate(id, todo, (err, updateTodo) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('todo updated');
+        res.json(updateTodo);
+      }
+    });
+  });
 });
 
 router.put('/updateComplete/:id', (req, res) => {
