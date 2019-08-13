@@ -20,6 +20,27 @@ router.get('/', (req, res) => {
   });
 });
 
+router.post('/search', (req, res) => {
+  let { searchTerm } = req.body;
+  let regex = new RegExp(searchTerm);
+
+  Todo.find({ body: regex }, (err, todos) => {
+    if (err) {
+      console.log(err);
+    } else {
+      let newArr = [];
+      todos.forEach(item => {
+        if (item.complete) {
+          newArr.push(item);
+        } else {
+          newArr.unshift(item);
+        }
+      });
+      res.render('index', { todos: newArr });
+    }
+  });
+});
+
 router.post('/', (req, res) => {
   let newTodo = req.body;
   newTodo.date = new Date().toDateString();

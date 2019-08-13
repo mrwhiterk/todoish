@@ -11,65 +11,83 @@
   </head>
   <body>
     <header>
-      <h1>Todoish</h1>
+      <h1><a class="title" href="/">Todoish</a></h1>
       
     </header>
-    <form action="/" method="POST">
-      <label
-        >
-        <input type="text" id="todoInput" name="body" placeholder="enter new todo"
-      />
-      </label>
-      
-      <input class="btn btn-success" id="addButton" type="submit" value="Add"/>
+    <div class="row d-flex">
+      <div class="col-md-6 d-flex justify-content-center">
+        <form action="/" method="POST">
+          <label
+            >
+            <input type="text" class="form-control" id="todoInput" name="body" placeholder="enter new todo"
+          />
+          </label>
+          
+          <input class="btn btn-success" id="addButton" type="submit" value="Add"/>
+          
 
-    </form>
+        </form>
+      </div>
+      <div class="col-md-6 d-flex justify-content-center">
+        <form action="/search" method="POST">
+          <label
+            >
+            <input type="text" class="form-control" id="todoSearchInput" name="searchTerm" placeholder="enter search term"
+          />
+          </label>
+          
+          <input class="btn btn-info" id="searchButton" type="submit" value="Search"/>
+        </form>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center">
 
-    <ul class="todoList">
-      <% todos.forEach( todo => { %>
-        <li>
-          <% if (todo.complete) { %>
-            <p class="completed todo">
-              <%= todo.body %>
-            </p>
-            <h6 class="completed" id='date'>
-              <%= todo.date %>
-            </h6>
-          <% } else { %>
-            <p class='todo'>
-              <%= todo.body %>
-              <input type='hidden' id='todoId' value='<%= todo._id %>' />
-            </p>
-            <h6 id='date'>
-              <%= todo.date %>
-            </h6>
-          <% } %>
-          <span>
-          <% if (todo.complete) { %>
+      <ul class="todoList">
+        <% todos.forEach( todo => { %>
+          <li>
+            <% if (todo.complete) { %>
+              <p class="completed todo">
+                <%= todo.body %>
+              </p>
+              <h6 class="completed" id='date'>
+                <%= todo.date %>
+              </h6>
+            <% } else { %>
+              <p class='todo'>
+                <%= todo.body %>
+                <input type='hidden' id='todoId' value='<%= todo._id %>' />
+              </p>
+              <h6 id='date'>
+                <%= todo.date %>
+              </h6>
+            <% } %>
+            <span>
+            <% if (todo.complete) { %>
 
-            <form action="/updateComplete/<%= todo._id %>?_method=put" method="POST">
-              <button type='submit' class='complete'>
-                <i class="fas fa-eraser"></i>
-              </button>
-            </form>
-          <% } else { %>
-            <form action="/updateComplete/<%= todo._id %>?_method=put" method="POST">
-              <button type='submit' class='complete'>
-                <i class="fas fa-check-square"></i>
-              </button>
-            </form>
-          <% } %>
-            <form action="/<%= todo._id %>?_method=delete" method="POST">
-              <button type='submit' class="deleteBtn">
-                <i class="fas fa-trash"></i>
-              </button>
-            </form>
-          </span>
-        </li>
-      <% }); %>
-      
+              <form action="/updateComplete/<%= todo._id %>?_method=put" method="POST">
+                <button type='submit' class='complete'>
+                  <i class="fas fa-eraser"></i>
+                </button>
+              </form>
+            <% } else { %>
+              <form action="/updateComplete/<%= todo._id %>?_method=put" method="POST">
+                <button type='submit' class='complete'>
+                  <i class="fas fa-check-square"></i>
+                </button>
+              </form>
+            <% } %>
+              <form action="/<%= todo._id %>?_method=delete" method="POST">
+                <button type='submit' class="deleteBtn">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </form>
+            </span>
+          </li>
+        <% }); %>
+        
 
-    </ul>
+      </ul>
+    </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/js/main.js"></script>
   </body>
