@@ -44,6 +44,7 @@ h1 {
 .buttons {
   width: 80%;
   margin: 0 auto;
+  justify-content: center;
 }
 
 ul {
