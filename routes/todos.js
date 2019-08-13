@@ -19,6 +19,44 @@ router.get('/', (req, res) => {
     }
   });
 });
+router.get('/sortAlpha', (req, res) => {
+  Todo.find({}, (err, todos) => {
+    if (err) {
+      console.log(err);
+    } else {
+      todos.sort((a, b) => (a.body > b.body ? 1 : -1));
+      res.render('index', { todos });
+    }
+  });
+});
+router.get('/sortAlphaReverse', (req, res) => {
+  Todo.find({}, (err, todos) => {
+    if (err) {
+      console.log(err);
+    } else {
+      todos.sort((a, b) => (a.body < b.body ? 1 : -1));
+      res.render('index', { todos });
+    }
+  });
+});
+router.get('/completeSort', (req, res) => {
+  Todo.find({ complete: true }, (err, todos) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render('index', { todos });
+    }
+  });
+});
+router.get('/incompleteSort', (req, res) => {
+  Todo.find({ complete: false }, (err, todos) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render('index', { todos });
+    }
+  });
+});
 
 router.post('/search', (req, res) => {
   let { searchTerm } = req.body;

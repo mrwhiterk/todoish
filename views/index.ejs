@@ -23,7 +23,7 @@
           />
           </label>
           
-          <input class="btn btn-success" id="addButton" type="submit" value="Add"/>
+          <input class="btn btn-primary" id="addButton" type="submit" value="Add"/>
           
 
         </form>
@@ -36,9 +36,15 @@
           />
           </label>
           
-          <input class="btn btn-info" id="searchButton" type="submit" value="Search"/>
+          <input class="btn btn-primary" id="searchButton" type="submit" value="Search"/>
         </form>
       </div>
+    </div>
+    <div class="row d-flex buttons">
+      <a href="/sortAlpha"><button class="btn btn-outline-primary">A-Z</button></a>
+      <a href="/sortAlphaReverse"><button class="btn btn-outline-primary">Z-A</button></a>
+      <a href="/completeSort"><button class="btn btn-outline-primary">complete</button></a>
+      <a href="/incompleteSort"><button class="btn btn-outline-primary">incomplete</button></a>
     </div>
     <div class="row d-flex justify-content-center">
 
@@ -66,13 +72,13 @@
 
               <form action="/updateComplete/<%= todo._id %>?_method=put" method="POST">
                 <button type='submit' class='complete'>
-                  <i class="fas fa-eraser"></i>
+                  <i class="fas fa-check-square"></i>
                 </button>
               </form>
             <% } else { %>
               <form action="/updateComplete/<%= todo._id %>?_method=put" method="POST">
                 <button type='submit' class='complete'>
-                  <i class="fas fa-check-square"></i>
+                  <i class="fas fa-pencil-alt"></i>
                 </button>
               </form>
             <% } %>

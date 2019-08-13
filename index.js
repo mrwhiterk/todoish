@@ -10,8 +10,6 @@ const todoRoutes = require('./routes/todos');
 
 const PORT = process.env.PORT || 3000;
 
-console.log('process ', process.env.DATABASEURL);
-
 mongoose
   .connect(process.env.DATABASEURL || 'mongodb://localhost:27017/todoish', {
     useNewUrlParser: true,
@@ -33,5 +31,3 @@ app.use('/', todoRoutes);
 app.listen(PORT, () => {
   console.log(`Example app listening on ${PORT} port!`);
 });
-
-//Run app, then load http://localhost:port in a browser to see the output.

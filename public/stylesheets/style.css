@@ -9,6 +9,15 @@ body {
   flex-direction: column;
   justify-content: center;
   font-size: 1.5rem;
+  background-color: #f0d4ff;
+}
+
+.btn-primary {
+  background-color: #a500fd;
+}
+
+.btn-outline-primary {
+  color: #a500fd;
 }
 
 /* header */
@@ -29,6 +38,12 @@ a.title {
 
 h1 {
   font-family: 'Source Code Pro', monospace;
+  font-size: 2.2em;
+}
+
+.buttons {
+  width: 80%;
+  margin: 0 auto;
 }
 
 ul {
@@ -37,6 +52,10 @@ ul {
   display: flex;
   flex-direction: column;
   width: 80%;
+}
+
+.todo {
+  width: 50%;
 }
 
 .todoList li {
@@ -51,10 +70,6 @@ ul {
   border-radius: 10px;
 }
 
-.todoList li:hover {
-  background-color: #f3f3f3;
-}
-
 label {
   margin: 16px 0;
 }
@@ -63,74 +78,28 @@ label {
   height: 40px;
   border-radius: 5px;
   outline: none;
-  /* width: 200px; */
   font-size: 1.1rem;
 }
 #todoInput:focus {
   background-color: lightblue;
 }
 
-#addButton {
-  /* height: 30px;
-  width: 100px;
-  background-color: rgb(5, 207, 32);
-  color: white;
-  font-size: 18px;
-  border-radius: 5px;
-  outline: none;
-  border: none; */
-  /* box-shadow: 0 10px rgb(82, 255, 119);
-  position: relative; */
-}
-
-/* input[type='submit']:hover {
-  box-shadow: 0 5px rgb(82, 255, 119);
-  top: 5px;
-}
-
-input[type='submit']:active {
-  box-shadow: 0 0 rgb(82, 255, 119);
-  top: 10px;
-} */
-
 .deleteBtn {
-  background-color: red;
-  color: white;
+  background-color: transparent;
+  color: red;
   display: inline-block;
   margin: 10px;
   cursor: pointer;
-  /* box-shadow: 0 10px rgb(255, 115, 115); */
-  /* position: relative; */
 }
-
-/* .deleteBtn:hover {
-  box-shadow: 0 5px rgb(255, 115, 115);
-  top: 5px;
-} */
-/* .deleteBtn:active {
-  box-shadow: 0 0 rgb(255, 115, 115);
-  top: 10px;
-} */
 
 .complete {
-  background-color: orange;
-  color: white;
+  background-color: transparent;
+  color: orange;
   display: inline-block;
   margin: 10px;
   cursor: pointer;
   outline: none;
-  /* position: relative;
-  box-shadow: 0 10px rgb(255, 205, 112); */
 }
-
-/* .complete:hover {
-  box-shadow: 0 5px rgb(255, 205, 112);
-  top: 5px;
-}
-.complete:active {
-  box-shadow: 0 0 rgb(255, 205, 112);
-  top: 10px;
-} */
 
 .done {
   text-decoration: line-through;
