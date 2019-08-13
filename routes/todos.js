@@ -47,7 +47,7 @@ router.post('/updateText/:id/:text', (req, res) => {
         console.log(err);
       } else {
         console.log('todo updated');
-        res.json(updateTodo);
+        res.redirect('/');
       }
     });
   });
