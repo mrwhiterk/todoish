@@ -16,18 +16,17 @@ body {
 /* header */
 
 header {
-  background-color: #383838;
+  /* background-color: #383838; */
   width: 100%;
   height: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
   margin-bottom: 20px;
 }
 
 h1 {
-  font-family: sans-serif;
+  font-family: 'Source Code Pro', monospace;
 }
 
 ul {
@@ -70,19 +69,19 @@ label {
 }
 
 #addButton {
-  height: 30px;
+  /* height: 30px;
   width: 100px;
   background-color: rgb(5, 207, 32);
   color: white;
   font-size: 18px;
   border-radius: 5px;
   outline: none;
-  border: none;
-  box-shadow: 0 10px rgb(82, 255, 119);
-  position: relative;
+  border: none; */
+  /* box-shadow: 0 10px rgb(82, 255, 119);
+  position: relative; */
 }
 
-input[type='submit']:hover {
+/* input[type='submit']:hover {
   box-shadow: 0 5px rgb(82, 255, 119);
   top: 5px;
 }
@@ -90,7 +89,7 @@ input[type='submit']:hover {
 input[type='submit']:active {
   box-shadow: 0 0 rgb(82, 255, 119);
   top: 10px;
-}
+} */
 
 .deleteBtn {
   background-color: red;
@@ -98,18 +97,18 @@ input[type='submit']:active {
   display: inline-block;
   margin: 10px;
   cursor: pointer;
-  box-shadow: 0 10px rgb(255, 115, 115);
-  position: relative;
+  /* box-shadow: 0 10px rgb(255, 115, 115); */
+  /* position: relative; */
 }
 
-.deleteBtn:hover {
+/* .deleteBtn:hover {
   box-shadow: 0 5px rgb(255, 115, 115);
   top: 5px;
-}
-.deleteBtn:active {
+} */
+/* .deleteBtn:active {
   box-shadow: 0 0 rgb(255, 115, 115);
   top: 10px;
-}
+} */
 
 .complete {
   background-color: orange;
@@ -118,18 +117,18 @@ input[type='submit']:active {
   margin: 10px;
   cursor: pointer;
   outline: none;
-  position: relative;
-  box-shadow: 0 10px rgb(255, 205, 112);
+  /* position: relative;
+  box-shadow: 0 10px rgb(255, 205, 112); */
 }
 
-.complete:hover {
+/* .complete:hover {
   box-shadow: 0 5px rgb(255, 205, 112);
   top: 5px;
 }
 .complete:active {
   box-shadow: 0 0 rgb(255, 205, 112);
   top: 10px;
-}
+} */
 
 .done {
   text-decoration: line-through;

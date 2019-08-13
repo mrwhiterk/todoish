@@ -4,11 +4,15 @@
     <title>Todoish</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://kit.fontawesome.com/3a05e85fdd.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
     <header>
       <h1>Todoish</h1>
+      
     </header>
     <form action="/" method="POST">
       <label
@@ -17,7 +21,7 @@
       />
       </label>
       
-      <input id="addButton" type="submit" />
+      <input class="btn btn-success" id="addButton" type="submit" value="Add"/>
 
     </form>
 
@@ -41,25 +45,25 @@
             </h6>
           <% } %>
           <span>
-            <form action="/<%= todo._id %>?_method=delete" method="POST">
-              <button type='submit' class="deleteBtn">
-                delete
-              </button>
-            </form>
           <% if (todo.complete) { %>
 
             <form action="/updateComplete/<%= todo._id %>?_method=put" method="POST">
               <button type='submit' class='complete'>
-                mark incomplete
+                <i class="fas fa-eraser"></i>
               </button>
             </form>
           <% } else { %>
             <form action="/updateComplete/<%= todo._id %>?_method=put" method="POST">
               <button type='submit' class='complete'>
-                complete
+                <i class="fas fa-check-square"></i>
               </button>
             </form>
           <% } %>
+            <form action="/<%= todo._id %>?_method=delete" method="POST">
+              <button type='submit' class="deleteBtn">
+                <i class="fas fa-trash"></i>
+              </button>
+            </form>
           </span>
         </li>
       <% }); %>
